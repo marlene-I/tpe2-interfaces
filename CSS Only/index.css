@@ -1,0 +1,152 @@
+:root{
+    --handle-color: white;
+    --marker-color: white;
+}
+
+body {
+    margin: 0;
+    background-image: url('../images/background-galaxy.avif');
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+
+
+
+.title{
+    text-align: center;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
+    font-size: 35px;
+}
+
+
+
+#clock{
+    background-color: rgba(255, 255, 255, .2);
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    width: 450px;
+    height: 450px;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.handle {
+    transform-origin: bottom;
+    position: absolute;
+    left: calc(50% - 2px);
+    top: calc(50% - 200px);
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 200px solid var(--handle-color);
+    animation-name: rotate;
+    animation-timing-function: steps(60);
+    animation-iteration-count: infinite;
+ }
+
+.seconds{
+    width: 0px;
+    height: 0px;
+    border-radius: 0px 0px 5px 5px;
+    left: calc(50% - 1px);
+    top: calc(50% - 198px);
+}
+
+.minutes{
+    width: 2px;
+    height: 2px;
+    border-radius: 2px 2px 5px 5px;    
+}
+
+.hours{
+    width: 3px;
+    height: 3px;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 100px solid var(--handle-color);
+    border-radius: 1px 1px 8px 8px;   
+    top: calc(50% - 100px);
+    left: calc(50% - 1px);
+}
+
+.handle.seconds{
+    animation-duration: 60s;
+    animation-delay: -10s;
+}
+
+.handle.minutes{
+    animation-duration: 3600s;
+    animation-delay: -1800s;
+}
+
+.handle.hours{
+    animation-duration: 72000s;
+    animation-delay: -60000s;
+}
+
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.marker{
+    width: 3px;
+    background-color: var(--marker-color);
+    left: calc(50% - 1.5px);
+    position: absolute;
+    z-index: 1000;
+    height: 30px;
+    top: 2%;
+    border-radius: 27%;
+}
+
+.marker.two{
+    transform: rotate(90deg);
+    left: 95%;
+    top: calc(50% - 15px);;
+}
+
+
+.marker.three{
+    transform: rotate(180deg);
+    left: calc(50% - 1.5px);
+    top: 92%;
+}
+
+.marker.four{
+    transform: rotate(270deg);
+    left: 5%;
+    top: calc(50% - 15px);
+}
+
+
+.marker::after,
+.marker::before {
+    background-color: var(--marker-color);
+    content:'';
+    width: 3px;
+    height: 19px;
+    position: absolute;
+    border-radius: 27%;
+    margin-top: 2rem; 
+}
+
+.marker::after {
+    margin-left: 5.5rem;
+    transform: rotate(30deg);
+ }
+.marker::before {
+    margin-left: -5.5rem;
+    transform: rotate(-30deg);
+}
+
